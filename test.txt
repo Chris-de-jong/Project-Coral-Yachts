@@ -1,6 +1,0 @@
-git init 
-git add . (. = alle bestanden selecteren)
-git status (miss)
-git commit -m "Eerste commit" (m van modify; er zijn ook andere opties blijkbaar)
-git remote add origin https://github.com/Chris-de-jong/Project-Coral-Yachts.git
-git push -u origin master
