@@ -1,3 +1,5 @@
+cd \
+cd <link>
 git init 
 git add . (. = alle bestanden selecteren)
 git status (miss)
