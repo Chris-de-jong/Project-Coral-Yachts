@@ -56,9 +56,6 @@
                        <ul>
                          <li class="r-has-child">
                            <a href="index.php">HOME</a>
-                           <ul class="pl-0 ml-0">
-                             <li><a href="index.php">Home 01</a></li>
-                           </ul>
                          </li>
                          <li class="r-has-child">
                            <a href="about.php">ABOUT US</a>
@@ -67,10 +64,10 @@
                            </ul>
                          </li>
                          <li class="r-has-child">
-                           <a href="yacht-listing.php">VEHICLES</a>
+                           <a href="yachts-listing.php">VEHICLES</a>
                            <ul class="pl-0 ml-0">
-                             <li><a href="yacht-list-map.php">Yacht List Map</a></li>
-                             <li><a href="yacht-booking.php">Yacht Booking</a></li>
+                             <li><a href="yachts-list-map.php">Yacht List Map</a></li>
+                             <li><a href="yachts-booking.php">Yacht Booking</a></li>
                            </ul>
                          </li>
                          <li><a href="gallery.php">GALLERY</a></li>

@@ -5,13 +5,13 @@
          <div class="row clearfix">
            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-12">
              <div class="r-logo">
-               <a href="index.html" class="d-inline-block"><img src="assets/images/logo.png" class="img-fluid d-block" alt=""></a>
+               <a href="index.php" class="d-inline-block"><img src="assets/images/logo_white.png" class="img-fluid d-block" alt=""></a>
              </div>
              <a href="javaScript:void(0)" class="menu-icon"> <i class="fa fa-bars"></i> </a>
            </div>
            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-xs-12">
              <div class="r-header-action float-right">
-               <a href="login-register.html"> <img src="assets/images/icon-lock.png" alt='' /> <span>Login</span></a>
+               <a href="login-register.php"> <img src="assets/images/icon-lock.png" alt='' /> <span>Login</span></a>
                <a href="#" class="r-search"> <img src="assets/images/icon-search.png" alt='' /> <span>Search</span></a>
 
                <div class="r-search-wrapper">
@@ -29,30 +29,18 @@
                <nav>
                  <ul>
                    <li class="r-has-child">
-                     <a href="index.html">HOME</a>
-                     <ul class="pl-0 ml-0">
-                       <li><a href="index.html">Home 01</a></li>
-                       <li><a href="index-02.html">Home 02</a></li>
-                       <li><a href="index-03.html">Home 03</a></li>
-                       <li><a href="index-04.html">Home 04</a></li>
-                     </ul>
+                     <a href="index.php">HOME</a>
                    </li>
                    <li class="r-has-child">
-                     <a href="about.html">ABOUT US</a>
+                     <a href="yachts-listing.php">VEHICLES</a>
                      <ul class="pl-0 ml-0">
-                       <li><a href="faq.html">Faq</a></li>
+                       <li><a href="yachts-list-map.php">Yacht List Map</a></li>
+                       <li><a href="yachts-booking.php">Yacht Booking</a></li>
                      </ul>
                    </li>
-                   <li class="r-has-child">
-                     <a href="car-listing.html">VEHICLES</a>
-                     <ul class="pl-0 ml-0">
-                       <li><a href="car-list-map.html">Car List Map</a></li>
-                       <li><a href="car-booking.html">Car Booking</a></li>
-                     </ul>
-                   </li>
-                   <li><a href="gallery.html">GALLERY</a></li>
-                   <li><a href="drivers.html">DRIVERS</a></li>
-                   <li><a href="contact.html">CONTACT US</a></li>
+                   <li><a href="gallery.php">GALLERY</a></li>
+                   <li><a href="shippers.php">SHIPPERS</a></li>
+                   <li><a href="contact.php">CONTACT US</a></li>
                  </ul>
                </nav>
              </div>
@@ -62,11 +50,11 @@
      </div>
      <div class="r-header-inner-banner">
        <div class="r-header-in-over">
-         <h1>Our <b>Drivers</b> </h1>
+         <h1>Our <b>Shippers</b> </h1>
          <div class="r-breadcrum">
            <ul>
              <li><a href="#">HOME</a></li>
-             <li><span>DIVERS</span></li>
+             <li><span>SHIPPERS</span></li>
            </ul>
          </div>
        </div>
