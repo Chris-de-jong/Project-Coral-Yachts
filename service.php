@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
       <!-- PAGE TITLE -->
-      <title>Home - Royal Cars</title>
+      <title>Home - Coral Yachts</title>
 
       <!-- META-DATA -->
       <meta http-equiv="content-type" content="text/html; charset=utf-8" >
@@ -49,7 +50,7 @@
             <div class="container clearfix">
               <div class="advantage-head">
                 <span>120+ CARS TYPE & BRANDS</span>
-                <h2>Royal Cars <b>Advantages.</b></h2>
+                <h2>Coral Yachts <b>Advantages.</b></h2>
               </div>
               <div class="row clearfix">
                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -216,10 +217,10 @@
                       <h6>OUR INFO</h6>
                       <nav>
                         <ul>
-                          <li><a href="#">About Royal Cars</a></li>
+                          <li><a href="#">About Coral Yachts</a></li>
                           <li><a href="#">Our Mission & Strategy</a></li>
                           <li><a href="#">Our Vision</a></li>
-                          <li><a href="#">Royal Cars Advantages</a></li>
+                          <li><a href="#">Coral Yachts Advantages</a></li>
                           <li><a href="#">Contact Us</a></li>
                         </ul>
                       </nav>

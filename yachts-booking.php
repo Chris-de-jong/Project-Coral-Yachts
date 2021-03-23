@@ -396,7 +396,7 @@
                       <h6>OUR INFO</h6>
                       <nav>
                         <ul>
-                          <li><a href="#">About Royal Cars</a></li>
+                          <li><a href="#">About Coral Yachts</a></li>
                           <li><a href="#">Our Mission & Strategy</a></li>
                           <li><a href="#">Our Vision</a></li>
                           <li><a href="#">Royal Cars Advantages</a></li>

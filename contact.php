@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
       <!-- PAGE TITLE -->
-      <title>Home - Royal Cars</title>
+      <title>Home - Coral Yachts</title>
 
       <!-- META-DATA -->
       <meta http-equiv="content-type" content="text/html; charset=utf-8" >
@@ -50,7 +50,7 @@
           <div class="container clearfix">
             <div class="contact-head">
               <span>OUR OFFICE</span>
-              <h2>Contact <b>Royal Cars</b> for<br> More Information. </h2>
+              <h2>Contact <b>Coral Yachts</b> for<br> More Information. </h2>
             </div>
 
             <div class="row clearfix">
