@@ -67,14 +67,14 @@
                            </ul>
                          </li>
                          <li class="r-has-child">
-                           <a href="car-listing.php">VEHICLES</a>
+                           <a href="yacht-listing.php">VEHICLES</a>
                            <ul class="pl-0 ml-0">
-                             <li><a href="car-list-map.php">Car List Map</a></li>
-                             <li><a href="car-booking.php">Car Booking</a></li>
+                             <li><a href="yacht-list-map.php">Yacht List Map</a></li>
+                             <li><a href="yacht-booking.php">Yacht Booking</a></li>
                            </ul>
                          </li>
                          <li><a href="gallery.php">GALLERY</a></li>
-                         <li><a href="drivers.php">DRIVERS</a></li>
+                         <li><a href="shippers.php">SHIPPERS</a></li>
                          <li><a href="contact.php">CONTACT US</a></li>
                        </ul>
                      </nav>
@@ -116,17 +116,17 @@
              </div>
            </div>
 
-           <div class="r-car-search">
+           <div class="r-yacht-search">
              <div class="container">
                <div class="r-top-form-title animated fadeInUp">
-                 <span>120+ CARS TYPE & BRANDS</span>
-                 <h3>Search Your <b>Best Cars.</b></h3>
+                 <span>3+ YACHT TYPE & BRANDS</span>
+                 <h3>Search Your <b>Best Yachts.</b></h3>
                </div>
                <form>
                  <div class="row">
                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                      <div class="form-group">
-                       <label> Car Brand </label>
+                       <label> Yacht Brand </label>
                        <select class="form-control">
                          <option>Any Brands</option>
                          <option>Any Brands</option>
@@ -137,7 +137,7 @@
                    </div>
                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                      <div class="form-group">
-                       <label> Car Type </label>
+                       <label> Yacht Type </label>
                        <select class="form-control">
                          <option>Any Type</option>
                          <option>Any Type</option>
@@ -148,7 +148,7 @@
                    </div>
                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                      <div class="form-group">
-                       <label> Car Price </label>
+                       <label> Yacht Price </label>
                        <select class="form-control">
                          <option>Price Low to High</option>
                          <option>Price High to Low</option>
@@ -157,7 +157,7 @@
                    </div>
                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                      <div class="form-group">
-                       <input type="submit" class="form-control btn-primary" value="Search Car Now">
+                       <input type="submit" class="form-control btn-primary" value="Search Yacht Now">
                      </div>
                    </div>
                  </div>
@@ -257,13 +257,13 @@
                       <div id="r-quote-carousel" class="carousel slide">
                         <div class="carousel-inner" role="listbox">
                           <div class="carousel-item">
-                             <p>“This was our first time renting from Royal Cars and we were very pleased with the whole experience. Your price was lower than other companies. Our rental experience was good from start to finish, so we’ll be back in the future lorem ipsum diamet.”</p>
+                             <p>“This was our first time renting from Coral Yachts and we were very pleased with the whole experience. Your price was lower than other companies. Our rental experience was good from start to finish, so we’ll be back in the future lorem ipsum diamet.”</p>
                           </div>
                           <div class="carousel-item active">
-                            <p>“This was our first time renting from Royal Cars and we were very pleased with the whole experience. Your price was lower than other companies. Our rental experience was good from start to finish, so we’ll be back in the future lorem ipsum diamet.”</p>
+                            <p>“This was our first time renting from Coral Yachts and we were very pleased with the whole experience. Your price was lower than other companies. Our rental experience was good from start to finish, so we’ll be back in the future lorem ipsum diamet.”</p>
                           </div>
                           <div class="carousel-item">
-                             <p>“This was our first time renting from Royal Cars and we were very pleased with the whole experience. Your price was lower than other companies. Our rental experience was good from start to finish, so we’ll be back in the future lorem ipsum diamet.”</p>
+                             <p>“This was our first time renting from Coral Yachts and we were very pleased with the whole experience. Your price was lower than other companies. Our rental experience was good from start to finish, so we’ll be back in the future lorem ipsum diamet.”</p>
                           </div>
                         </div>
                         <ol class="carousel-indicators">
