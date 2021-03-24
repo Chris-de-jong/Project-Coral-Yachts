@@ -23,7 +23,6 @@
       <link rel="stylesheet" type="text/css" href="assets/css/main.css">
       <link rel="stylesheet" type="text/css" id="r-color-roller" href="assets/color-files/color-08.css">
 
-       <php>
        <header>
          <div class="r-header r-header-inner r-header-strip-01">
            <div class="r-header-strip r-header-strip-01">
