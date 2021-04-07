@@ -81,30 +81,30 @@
            </div>
            <div class="r-slider owl-carousel" id="defaultHomeSlider">
              <div class="r-slider-item">
-               <img src="assets/images/main-slider-01.jpg" class="img-fluid d-block m-auto" alt="">
+               <img src="assets/images/main-slider-01.png" class="img-fluid d-block m-auto" alt="">
                <div class="container">
                  <div class="r-slider-top-content">
-                   <h1 class="animated fadeInDown">Kia Rio <span>z</span></h1>
+                   <h1 class="animated fadeInDown">Geen Kia Rio <span>z</span></h1>
                    <h4 class="animated fadeInLeft">FOR RENT <strong>$50</strong> PER DAY</h4>
                    <a href="#" class="btn btn-outlined animated fadeInUp"> Reserve Now </a>
                  </div>
                </div>
              </div>
              <div class="r-slider-item">
-               <img src="assets/images/main-slider-04.jpg" class="img-fluid d-block m-auto" alt="">
+               <img src="assets/images/main-slider-02.png" class="img-fluid d-block m-auto" alt="">
                <div class="container">
                  <div class="r-slider-top-content">
-                   <h1>BMW <span>3</span></h1>
+                   <h1>Geen BMW <span>3</span></h1>
                    <h4>FOR RENT <strong>$150</strong> PER DAY</h4>
                    <a href="#" class="btn btn-outlined"> Reserve Now </a>
                  </div>
                </div>
              </div>
              <div class="r-slider-item">
-               <img src="assets/images/main-slider-05.jpg" class="img-fluid d-block m-auto" alt="">
+               <img src="assets/images/main-slider-03.png" class="img-fluid d-block m-auto" alt="">
                <div class="container">
                  <div class="r-slider-top-content">
-                   <h1>Audi <span>A4</span></h1>
+                   <h1>Geen Audi <span>A4</span></h1>
                    <h4>FOR RENT <strong>$100</strong> PER DAY</h4>
                    <a href="#" class="btn btn-outlined"> Reserve Now </a>
                  </div>
@@ -116,7 +116,7 @@
              <div class="container">
                <div class="r-top-form-title animated fadeInUp">
                  <span>3+ YACHT TYPE & BRANDS</span>
-                 <h3>Search Your <b>Best Yachts.</b></h3>
+                 <h3>Search Your <b>Best Yachts. Now.</b></h3>
                </div>
                <form>
                  <div class="row">
