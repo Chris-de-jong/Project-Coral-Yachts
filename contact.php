@@ -48,10 +48,13 @@
 
         <section id="r-contact-part" class="r-contact-part">
           <div class="container clearfix">
+
             <div class="contact-head">
               <span>OUR OFFICE</span>
               <h2>Contact <b>Coral Yachts</b> for<br> More Information. </h2>
             </div>
+
+            <?
 
             <div class="row clearfix">
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">

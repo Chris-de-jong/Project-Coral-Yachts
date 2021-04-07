@@ -1,6 +1,50 @@
+<?php
+// Initialize the session
+include( "connect.php");
+session_start();
+
+// Check if the user is already logged in, if yes then redirect him to welcome page
+
+ if($_SERVER["REQUEST_METHOD"] == "POST") {
+    // username and password sent from form
+
+    $myusername = "";
+    $mypassword = "";
+    $sql = "";
+    $result = "";
+    $row = "";
+    $active = "";
+
+
+    $myusername = mysqli_real_escape_string($db,$_POST['username']);
+    $mypassword = mysqli_real_escape_string($db,$_POST['password']);
+
+    $sql = "SELECT id FROM customers WHERE email = '$myusername' and password = '$mypassword'";
+    $query = mysqli_query($db,$sql);
+    $result = mysqli_result($query);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    $active = $row['active'];
+
+    $count = mysqli_num_rows($result);
+
+    // If result matched $myusername and $mypassword, table row must be 1 row
+
+    if($count == 1) {
+       session_register("myusername");
+       $_SESSION['login_user'] = $myusername;
+
+       header("location: index.php");
+    }else {
+       $error = "Your Login Name or Password is invalid";
+    }
+ }
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+
+
       <!-- PAGE TITLE -->
       <title>Login-Register - Coral Yachts</title>
 
@@ -43,7 +87,7 @@
       <div class="r-wrapper">
         <?php
         include "header.php";
-         ?>7
+         ?>
         <section id="r-login-register">
           <div class="r-login-register">
             <div class="r-login-register-in">
@@ -61,15 +105,18 @@
                       <a href="#"><img src="assets/images/fb.jpg" class="img-fluid d-block m-auto" alt=""></a>
                     </div>
                     <div class="r-or-line"><span>OR SIGN IN</span></div>
-                    <form action="#">
+                    <form action="" method="post">
                       <div class="form-group">
-                        <input type="text" class="form-control" required placeholder="Email">
+                        <?php
+
+                        ?>
+                        <input type="text" name="username" class = "box">
                       </div>
                       <div class="form-group">
-                        <input type="password" class="form-control" required placeholder="Password">
+                        <input type="password" name="password" class="box">
                       </div>
                       <div class="form-group">
-                        <button class="btn btn-full">LOGIN NOW</button>
+                        <input type="submit" value="login now" class="btn btn-full">
                       </div>
                     </form>
                     <div class="r-from-inof">
