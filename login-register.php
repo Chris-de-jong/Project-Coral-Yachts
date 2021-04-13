@@ -1,45 +1,5 @@
-<?php
-// Initialize the session
-include( "connect.php");
-session_start();
 
-// Check if the user is already logged in, if yes then redirect him to welcome page
-
- if($_SERVER["REQUEST_METHOD"] == "POST") {
-    // username and password sent from form
-
-    $myusername = "";
-    $mypassword = "";
-    $sql = "";
-    $result = "";
-    $row = "";
-    $active = "";
-
-
-    $myusername = mysqli_real_escape_string($db,$_POST['username']);
-    $mypassword = mysqli_real_escape_string($db,$_POST['password']);
-
-    $sql = "SELECT id FROM customers WHERE email = '$myusername' and password = '$mypassword'";
-    $query = mysqli_query($db,$sql);
-    $result = mysqli_result($query);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    $active = $row['active'];
-
-    $count = mysqli_num_rows($result);
-
-    // If result matched $myusername and $mypassword, table row must be 1 row
-
-    if($count == 1) {
-       session_register("myusername");
-       $_SESSION['login_user'] = $myusername;
-
-       header("location: index.php");
-    }else {
-       $error = "Your Login Name or Password is invalid";
-    }
- }
-?>
-
+<?php include('server.php') ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
@@ -133,24 +93,22 @@ session_start();
                     <span>Required information for account creation</span>
                   </div>
                   <div class="r-auth-form">
-                    <form action="#">
+                    <form method="post" action="#">
+                      <?php include('errors.php'); ?>
                       <div class="form-group">
-                        <input type="text" required class="form-control" placeholder="User name">
+                        <input type="email" required class="form-control" placeholder="Email Address" value="<?php echo $email; ?>" name="email">
                       </div>
                       <div class="form-group">
-                        <input type="password" required class="form-control" placeholder="Password">
+                        <input type="password" required class="form-control" placeholder="Password" name="password_1">
                       </div>
                       <div class="form-group">
-                        <input type="password" required class="form-control" placeholder="Confirm Password">
-                      </div>
-                      <div class="form-group">
-                        <input type="email" required class="form-control" placeholder="Email Address">
+                        <input type="password" required class="form-control" placeholder="Confirm Password" name="password_2">
                       </div>
                       <div class="form-group">
                         <img src="assets/images/recaptcha.jpg" class="img-fluid d-block m-auto" alt="">
                       </div>
                       <div class="form-group">
-                        <button class="btn btn-full">SIGN UP NOW</button>
+                        <button type="submit" class="btn btn-full" name="reg_user">SIGN UP NOW</button>
                       </div>
                     </form>
                   </div>

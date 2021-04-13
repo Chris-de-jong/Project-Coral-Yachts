@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+<?php include('server.php') ?>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
       <!-- PAGE TITLE -->
       <title>Home - Coral Yacht</title>
+
 
       <!-- META-DATA -->
       <meta http-equiv="content-type" content="text/html; charset=utf-8" >
@@ -114,6 +116,25 @@
 
            <div class="r-yacht-search">
              <div class="container">
+               <div class="content">
+                  <!-- notification message -->
+                  <?php if (isset($_SESSION['success'])) : ?>
+                     <div class="error success" >
+                      <h3>
+                         <?php
+                          echo $_SESSION['success'];
+                          unset($_SESSION['success']);
+                         ?>
+                      </h3>
+                     </div>
+                  <?php endif ?>
+
+                   <!-- logged in user information -->
+                   <?php  if (isset($_SESSION['email'])) : ?>
+                    <p>Welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
+                    <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+                   <?php endif ?>
+               </div>
                <div class="r-top-form-title animated fadeInUp">
                  <span>3+ YACHT TYPE & BRANDS</span>
                  <h3>Search Your <b>Best Yachts. Now.</b></h3>
