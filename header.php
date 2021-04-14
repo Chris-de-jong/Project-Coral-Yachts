@@ -42,6 +42,10 @@
                    <li><a href="gallery.php">GALLERY</a></li>
                    <li><a href="shippers.php">SHIPPERS</a></li>
                    <li><a href="contact.php">CONTACT US</a></li>
+                   <li><?php  if (isset($_SESSION['email'])) : ?>
+                                       <p>Hello, <strong><?php echo $_SESSION['email']; ?></strong></p>
+                                       <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+                                      <?php endif ?></li>
                  </ul>
                </nav>
              </div>

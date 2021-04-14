@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include('server.php') ?>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
       <!-- PAGE TITLE -->
