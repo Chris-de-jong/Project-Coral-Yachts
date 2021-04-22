@@ -1,8 +1,54 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <?php
+    include 'connect.php';
+
+
+    if (isset($_GET['userSearch'])) {
+      $searchTestConstructor = array($_GET['userSearch'], "!");
+      $searchTest = join("", $searchTestConstructor);
+    }else{
+      $searchTest = "!";
+    }
+    
+    if (isset($_GET['search_activate'])) {
+      if ($searchTest != "!!") {
+        $userSearch = $_GET['userSearch'];
+        $sql = "SELECT YachtID, name, portname, status, priceperday FROM yachts WHERE portname = '$userSearch'";
+      }else{
+        $sql = "SELECT YachtID, name, portname, status, priceperday FROM yachts";
+      }
+    }else{
+      $sql = "SELECT YachtID, name, portname, status, priceperday FROM yachts";
+    }
+
+
+    $result = mysqli_query($db, $sql);
+
+    $yachtidArray = array();
+    $yachtnameArray = array();
+    $portnameArray = array();
+    $statusArray = array();
+    $priceArray = array();
+
+
+    if (mysqli_num_rows($result) > 0) {
+      while($row = mysqli_fetch_row($result)) {
+        array_push($yachtidArray, $row['0']);
+        array_push($yachtnameArray, $row['1']);
+        array_push($portnameArray, $row['2']);
+        array_push($statusArray, $row['3']);
+        array_push($priceArray, $row['4']);
+      }
+    }
+
+
+
+    $totalrow = count($yachtidArray);
+  ?>
   <head>
       <!-- PAGE TITLE -->
-      <title>Car List Map - Royal Cars</title>
+      <title>Yacht list</title>
 
       <!-- META-DATA -->
       <meta http-equiv="content-type" content="text/html; charset=utf-8" >
@@ -25,265 +71,66 @@
   </head>
   <body>
      <section id="r-customizer" class="r-customizer">
-            <div class="r-selector">
-                  <span class="d-block text-center">Color Options</span>
-                  <div class="r-color_section r-color_block">
-                        <ul class="r-color_selector" id="r-color_selector">
-                            <li class="r-color_1" data-attr="color-01"></li>
-                            <li class="r-color_6" data-attr="color-06"></li>
-                            <li class="r-color_2" data-attr="color-02"></li>
-                            <li class="r-color_3" data-attr="color-03"></li>
-                            <li class="r-color_4" data-attr="color-04"></li>
-                            <li class="r-color_5" data-attr="color-05"></li>
-                            <li class="r-color_7" data-attr="color-07"></li>
-                            <li class="r-color_8" data-attr="color-08"></li>
-                        </ul>
-                  </div>
-            </div>
             <i id="r-selector_icon" class="fa fa-cog"></i>
       </section>
       <div class="r-wrapper">
         <?php
-        include "header.php";
-         ?>
+          include "header.php";
+        ?>
         <div class="container-fluid">
           <div class="row">
             <div class="col-xl-7 col-lg-6 col-md-6 col-sm-12 col-xs-12 r-list-area">
               <div class="r-car-search r-carlist-search">
                 <div class="container">
-                  <form>
+                  <form action="yachts-list-map.php" method="get">
                     <div class="row">
                       <div class="r-search-full col-md-12">
                        <div class="form-group">
-                         <input type="text" class="form-control" placeholder="Search car by name or location">
-                         <button class="fa fa-search"></button>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="form-group">
-                          <label> Car Brand </label>
-                          <select class="form-control">
-                            <option>Any Brands</option>
-                            <option>Any Brands</option>
-                            <option>Any Brands</option>
-                            <option>Any Brands</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="form-group">
-                          <label> Car Type </label>
-                          <select class="form-control">
-                            <option>Any Type</option>
-                            <option>Any Type</option>
-                            <option>Any Type</option>
-                            <option>Any Type</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="form-group">
-                          <label> Car Price </label>
-                          <select class="form-control">
-                            <option>Price Low to High</option>
-                            <option>Price High to Low</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="form-group mb-0">
-                          <input type="submit" class="form-control btn-primary" value="Search Car Now">
+                          <input type="text" class="form-control" name="userSearch" placeholder="Search Yachts by port">
+                          <input type="submit" value="GO" class="fa fa-search" name="search_activate">
                         </div>
                       </div>
                     </div>
                   </form>
+
                 </div>
               </div>
               <div class="clearfix r-sort-val">
                 <div class="pull-left">
-                  <span>Sort by : </span>
-                  <select class="r-show-cars-filter">
-                    <option value="6"> Name </option>
-                    <option value="10"> Price </option>
-                    <option value="20"> Age </option>
-                  </select>
                 </div>
-                <div class="pull-right"><span class="r-total-result">6 Search results</span></div>
+                <div class="pull-right"><span class="r-total-result"><?php echo count($yachtidArray); ?> results</span></div>
               </div>
               <div class="r-best-offer-list r-car-list-map mCustomScrollbar">
-                <div class="row clearfix">
-                  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="r-best-offer-single">
-                      <div class="r-best-offer-in">
-                        <div class="r-offer-img">
-                          <a class="d-inline-block" href="#"><img src="assets/images/car-1.png" class="img-fluid d-block m-auto" alt=""></a>
-                        </div>
-                        <div class="r-best-offer-content">
-                          <a href="#"><b>Volk</b> GTR</a>
-                          <p>Start at <b>45.00 USD</b> per day</p>
-                          <ul class="pl-0 mb-0">
-                            <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                            <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                            <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="r-best-offer-single">
-                      <div class="r-best-offer-in">
-                        <div class="r-offer-img">
-                          <a class="d-inline-block" href="#"><img src="assets/images/car-1.png" class="img-fluid d-block m-auto" alt=""></a>
-                        </div>
-                        <div class="r-best-offer-content">
-                          <a href="#"><b>Hyundai</b> Z.E</a>
-                          <p>Start at <b>45.00 USD</b> per day</p>
-                          <ul class="pl-0 mb-0">
-                            <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                            <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                            <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="r-best-offer-single">
-                      <div class="r-best-offer-in">
-                        <div class="r-offer-img">
-                          <a class="d-inline-block" href="#"><img src="assets/images/car-1.png" class="img-fluid d-block m-auto" alt=""></a>
-                        </div>
-                        <div class="r-best-offer-content">
-                          <a href="#"><b>Audi</b> R8</a>
-                          <p>Start at <b>45.00 USD</b> per day</p>
-                          <ul class="pl-0 mb-0">
-                            <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                            <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                            <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="r-best-offer-single">
-                      <div class="r-best-offer-in">
-                        <div class="r-offer-img">
-                          <a class="d-inline-block" href="#"><img src="assets/images/car-1.png" class="img-fluid d-block m-auto" alt=""></a>
-                        </div>
-                        <div class="r-best-offer-content">
-                          <a href="#"><b>Volk</b> GTR</a>
-                          <p>Start at <b>45.00 USD</b> per day</p>
-                          <ul class="pl-0 mb-0">
-                            <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                            <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                            <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="r-best-offer-single">
-                      <div class="r-best-offer-in">
-                        <div class="r-offer-img">
-                          <a class="d-inline-block" href="#"><img src="assets/images/car-1.png" class="img-fluid d-block m-auto" alt=""></a>
-                        </div>
-                        <div class="r-best-offer-content">
-                          <a href="#"><b>Hyundai</b> Z.E</a>
-                          <p>Start at <b>45.00 USD</b> per day</p>
-                          <ul class="pl-0 mb-0">
-                            <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                            <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                            <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="r-best-offer-single">
-                      <div class="r-best-offer-in">
-                        <div class="r-offer-img">
-                          <a class="d-inline-block" href="#"><img src="assets/images/car-1.png" class="img-fluid d-block m-auto" alt=""></a>
-                        </div>
-                        <div class="r-best-offer-content">
-                          <a href="#"><b>Audi</b> R8</a>
-                          <p>Start at <b>45.00 USD</b> per day</p>
-                          <ul class="pl-0 mb-0">
-                            <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                            <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                            <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="r-best-offer-single">
-                      <div class="r-best-offer-in">
-                        <div class="r-offer-img">
-                          <a class="d-inline-block" href="#"><img src="assets/images/car-1.png" class="img-fluid d-block m-auto" alt=""></a>
-                        </div>
-                        <div class="r-best-offer-content">
-                          <a href="#"><b>Volk</b> GTR</a>
-                          <p>Start at <b>45.00 USD</b> per day</p>
-                          <ul class="pl-0 mb-0">
-                            <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                            <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                            <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="r-best-offer-single">
-                      <div class="r-best-offer-in">
-                        <div class="r-offer-img">
-                          <a class="d-inline-block" href="#"><img src="assets/images/car-1.png" class="img-fluid d-block m-auto" alt=""></a>
-                        </div>
-                        <div class="r-best-offer-content">
-                          <a href="#"><b>Hyundai</b> Z.E</a>
-                          <p>Start at <b>45.00 USD</b> per day</p>
-                          <ul class="pl-0 mb-0">
-                            <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                            <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                            <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="r-best-offer-single">
-                      <div class="r-best-offer-in">
-                        <div class="r-offer-img">
-                          <a class="d-inline-block" href="#"><img src="assets/images/car-1.png" class="img-fluid d-block m-auto" alt=""></a>
-                        </div>
-                        <div class="r-best-offer-content">
-                          <a href="#"><b>Audi</b> R8</a>
-                          <p>Start at <b>45.00 USD</b> per day</p>
-                          <ul class="pl-0 mb-0">
-                            <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                            <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                            <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-4 col-xs-12 p-0 r-map-area">
-              <div class="r-hide-car-list r-flip-map">
-                <span>HIDE CAR LIST</span>
-                <i class="fa fa-angle-up"></i>
-              </div>
-              <div class="google-map r-google-map-list">
-                <div id="map-canvas"></div>
+                <form class="row clearfix" method="post">
+                
+                    <?php
+
+
+                      for ($rowselector=0; $rowselector < $totalrow ; $rowselector++) { 
+
+                        echo "
+                          <div class=\"col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12\">
+                            <div class=\"r-best-offer-single\">
+                              <div class=\"r-best-offer-in\">
+                                <div class=\"r-offer-img\">
+                                  <a class=\"d-inline-block\" href=\"yachts-booking.php?yacht=", $yachtidArray[$rowselector], "\"><img src=\"assets/images/car-1.png\" class=\"img-fluid d-block m-auto\" alt=\"\"></a>
+                                </div>
+                                <div class=\"r-best-offer-content\">
+                                  <a href=\"yachts-booking.php?yacht=", $yachtidArray[$rowselector], "\"><b>", $yachtnameArray[$rowselector], "</b></a>
+                                  <p>Start at <b>", $priceArray[$rowselector], " EUR</b> per day</p>
+                                  <ul class=\"pl-0 mb-0\">
+                                    <li><span>PORT: ", $portnameArray[$rowselector],  "</span></li><br>
+                                    <li></i><span>STATUS: ", $statusArray[$rowselector], "</span></li><br>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ";
+                      }
+                    ?>
+                  
+                </form>
               </div>
             </div>
           </div>

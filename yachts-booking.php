@@ -1,8 +1,38 @@
+<?php
+
+session_start();
+$_SESSION['email'] = "abcd@abcd";
+
+include 'connect.php';
+
+$email = $_SESSION['email'];
+
+if (isset($_SESSION['email'])) {
+  $sql = "SELECT customerid, firstname, lastname, phone FROM customers WHERE email = '$email'";
+  $result = mysqli_query($db, $sql);
+  $resultArray = mysqli_fetch_row($result);
+}else{
+  header("Location: pleaseLogin.php");
+}
+
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+
+
+    <?php
+      
+      $userID = $resultArray['0'];
+      $userFirstName = $resultArray['1'];
+      $userLastName = $resultArray['2'];
+      $userPhone = $resultArray['3'];
+
+    ?>
       <!-- PAGE TITLE -->
-      <title>Home - Royal Cars</title>
+      <title>Home - Coral Yachts</title>
+
+
 
       <!-- META-DATA -->
       <meta http-equiv="content-type" content="text/html; charset=utf-8" >
@@ -22,7 +52,7 @@
 
   </head>
   <body>
-       <section id="r-customizer" class="r-customizer">
+      <!-- <section id="r-customizer" class="r-customizer">
             <div class="r-selector">
                   <span class="d-block text-center">Color Options</span>
                   <div class="r-color_section r-color_block">
@@ -39,7 +69,7 @@
                   </div>
             </div>
             <i id="r-selector_icon" class="fa fa-cog"></i>
-      </section>
+      </section>   -->
       <div class="r-wrapper">
           <?php
           include "header.php";
@@ -64,7 +94,6 @@
                 <div class="r-offer-cost">
                   <span class="fa fa-usd r-currency"></span> 50.00 <small>Per Day</small>
                 </div>
-                <span class="r-tax-info"> INCLUDED TAXES & CHECKUP </span>
               </div>
             </div> <!-- /r-car-info-header -->
 
@@ -83,14 +112,14 @@
                       "We know the difference is in the details and that’s why our rental services, in the tourism and business."
                     </div>
                     <div class="r-testimonial-box">
-                      "We know the difference is in the details and that’s why our rental services, in the tourism and business."
+                      "please go commit seppuku."
                     </div>
                   </div>
                 </div>
 
                 <div class="r-product-discount">
                   <span class="r-discount">DISCOUNT 50%</span>
-                  <p class="r-discount-content"> Special Offers For <strong>Black Friday.</strong> </p>
+                  <p class="r-discount-content"> Special Offers For <strong>STONKS</strong> </p>
                 </div>
               </div>
 
@@ -105,18 +134,18 @@
                       <div class="row">
                         <div class="col-md-6 col-sm-12 col-xs-12">
                           <div class="form-group">
-                            <label>Departure</label>
+                            <label>Departure Port</label>
                             <div class="input-group">
-                               <input type="text" class="form-control" placeholder="Airport or anywhere" />
+                               <input type="text" class="form-control" placeholder="Port name" />
                                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                           <div class="form-group">
-                            <label>arival</label>
+                            <label>arival Port</label>
                             <div class="input-group">
-                               <input type="text" class="form-control" placeholder="Airport or anywhere" />
+                               <input type="text" class="form-control" placeholder="Port name" />
                                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
                             </div>
                           </div>
@@ -125,7 +154,7 @@
                           <div class="form-group">
                             <label>Departure date</label>
                             <div class="input-group">
-                               <input type="text" class="form-control" placeholder="dd.mm.yy" />
+                               <input type="text" class="form-control" placeholder="dd.mm.yyyy" />
                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                             </div>
                           </div>
@@ -134,7 +163,7 @@
                           <div class="form-group">
                             <label>Arival date</label>
                             <div class="input-group">
-                               <input type="text" class="form-control" placeholder="dd.mm.yy" />
+                               <input type="text" class="form-control" placeholder="dd.mm.yyyy" />
                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                             </div>
                           </div>
@@ -172,33 +201,10 @@
                   <div class="r-accordion-body">
                     <form>
                       <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <div class="r-site-checkbox">
-                              <label>
-                                Mr.
-                                <input type="checkbox" />
-                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                              </label>
-                              <label>
-                                Mrs.
-                                <input type="checkbox" />
-                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
                             <label>Full Name</label>
                             <input type="text" class="form-control" placeholder="Your full name"/>
-                          </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                          <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="text" class="form-control" placeholder="Example@gmail.com"/>
                           </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
@@ -208,16 +214,6 @@
                           </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
-                          <div class="form-group">
-                            <label>Nationality</label>
-                            <select class="form-control">
-                              <option value="">United State</option>
-                              <option value="">India</option>
-                              <option value="">Russia</option>
-                              <option value="">China</option>
-                              <option value="">Australia</option>
-                            </select>
-                          </div>
                         </div>
 
                       </div>
@@ -257,7 +253,7 @@
                           <div class="col-md-6 col-sm-12">
                             <div class="r-site-checkbox">
                               <label>
-                                <input type="checkbox" />
+                                <input type="checkbox"/>
                                 <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
                                 <span class="r-site-checkbox-text">Cheque Payment</span>
                               </label>
@@ -266,7 +262,7 @@
                           <div class="col-md-6 col-sm-12">
                             <div class="r-site-checkbox">
                               <label>
-                                <input type="checkbox" />
+                                <input type="checkbox"/>
                                 <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
                                 <span class="r-site-checkbox-text">Paypal</span>
                               </label>
