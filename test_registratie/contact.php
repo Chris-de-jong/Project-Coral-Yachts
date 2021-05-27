@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<?php include('server.php') ?>
   <head>
       <!-- PAGE TITLE -->
       <title>Home - Coral Yachts</title>
@@ -54,7 +55,7 @@
               <h2>Contact <b>Coral Yachts</b> for<br> More Information. </h2>
             </div>
 
-            <?
+            
 
             <div class="row clearfix">
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">

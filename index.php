@@ -38,7 +38,13 @@
                  </div>
                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
                    <div class="r-header-action float-left">
-                     <a href="login-register.php"> <img src="assets/images/icon-lock.png" alt='' /> <span>Login</span></a>
+
+                     <?php  if (isset($_SESSION['email'])) : ?>
+                            <a href="index.php?logout='1'"><img src="assets/images/icon-lock.png" alt='' /><span>Logout</span></a>
+                      <?php endif ?>
+                      <?php  if (!isset($_SESSION['email'])) : ?>
+                            <a href="login-register.php"> <img src="assets/images/icon-lock.png" alt='' /> <span>Login</span></a>
+                          <?php endif ?>
                      <a href="#" class="r-search"> <img src="assets/images/icon-search.png" alt='' /> <span>Search</span></a>
 
                      <div class="r-search-wrapper">
@@ -58,12 +64,7 @@
                          <li class="r-has-child">
                            <a href="index.php">HOME</a>
                          </li>
-                         <li class="r-has-child">
-                           <a href="about.php">ABOUT US</a>
-                           <ul class="pl-0 ml-0">
-                             <li><a href="faq.php">Faq</a></li>
-                           </ul>
-                         </li>
+
                          <li class="r-has-child">
                            <a href="yachts-listing.php">VEHICLES</a>
                            <ul class="pl-0 ml-0">
@@ -86,7 +87,7 @@
                <img src="assets/images/main-slider-01.png" class="img-fluid d-block m-auto" alt="">
                <div class="container">
                  <div class="r-slider-top-content">
-                   <h1 class="animated fadeInDown">Geen Kia Rio <span>z</span></h1>
+                   <h1 class="animated fadeInDown">Bijna een Kia Rio <span>z</span></h1>
                    <h4 class="animated fadeInLeft">FOR RENT <strong>$50</strong> PER DAY</h4>
                    <a href="#" class="btn btn-outlined animated fadeInUp"> Reserve Now </a>
                  </div>
@@ -96,7 +97,7 @@
                <img src="assets/images/main-slider-02.png" class="img-fluid d-block m-auto" alt="">
                <div class="container">
                  <div class="r-slider-top-content">
-                   <h1>Geen BMW <span>3</span></h1>
+                   <h1>Bijna een BMW <span>3</span></h1>
                    <h4>FOR RENT <strong>$150</strong> PER DAY</h4>
                    <a href="#" class="btn btn-outlined"> Reserve Now </a>
                  </div>
@@ -106,7 +107,7 @@
                <img src="assets/images/main-slider-03.png" class="img-fluid d-block m-auto" alt="">
                <div class="container">
                  <div class="r-slider-top-content">
-                   <h1>Geen Audi <span>A4</span></h1>
+                   <h1>Bijna een Audi <span>A4</span></h1>
                    <h4>FOR RENT <strong>$100</strong> PER DAY</h4>
                    <a href="#" class="btn btn-outlined"> Reserve Now </a>
                  </div>
@@ -128,12 +129,18 @@
                       </h3>
                      </div>
                   <?php endif ?>
+                  <?php
+                  if (isset($_GET['logout'])) {
+                    session_unset();
+                    $_POST = array();
+                    unset($_POST);
+                  }
+                  ?>
 
-                   <!-- logged in user information -->
-                   <?php  if (isset($_SESSION['email'])) : ?>
-                    <p>Hello, <strong><?php echo $_SESSION['email']; ?></strong></p>
-                    <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-                   <?php endif ?>
+
+
+
+
                </div>
                <div class="r-top-form-title animated fadeInUp">
                  <span>3+ YACHT TYPE & BRANDS</span>

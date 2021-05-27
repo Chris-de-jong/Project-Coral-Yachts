@@ -1,20 +1,22 @@
 <?php
-session_start();
 
+if (!isset($_SESSION)) session_start();
 // initializing variables
 $email    = "";
 $errors = array();
-
 // connect to the database
-
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 define('DB_DATABASE', 'aventus-160936_project-p5');
 $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 
-// REGISTER USER
+
 if (isset($_POST['reg_user'])) {
+  if (isset($_POST['login_user'])){ unset($_POST['login_user']);}
+
+  //echo "debug: reg_user executed";
+
   // receive all input values from the form
   $email = mysqli_real_escape_string($db, $_POST['email']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
@@ -53,32 +55,56 @@ if (isset($_POST['reg_user'])) {
   }
 }
 
-// ...
 
-// LOGIN USER
+
 if (isset($_POST['login_user'])) {
+	global $db, $email, $error, $password;
+  if (isset($_POST['reg_user'])){ unset($_POST['reg_user']);}
+
+  echo "debug: login_user executed";
+	// grap form values
   $email = mysqli_real_escape_string($db, $_POST['email']);
-  $password = mysqli_real_escape_string($db, $_POST['password']);
+	$password = mysqli_real_escape_string($db, $_POST['password']);
+  $_SESSION['user_type'] = 'regular user';
+	// make sure form is filled properly
+  if (empty($email)) { array_push($errors, "Email is required"); }
+	if (empty($password)) { array_push($errors, "Password is required"); }
 
-  if (empty($email)) {
-  	array_push($errors, "Email is required");
-  }
-  if (empty($password)) {
-  	array_push($errors, "Password is required");
-  }
+	// attempt login if no errors on form
+	if (count($errors) == 0) {
+		$password = md5($password);
 
-  if (count($errors) == 0) {
-  	$password = md5($password);
-  	$query = "SELECT * FROM customers WHERE email='$email' AND password='$password'";
-  	$results = mysqli_query($db, $query);
-  	if (mysqli_num_rows($results) == 1) {
-  	  $_SESSION['email'] = $email;
-  	  $_SESSION['success'] = "You are now logged in";
-  	  header('location: index.php');
-  	}else {
-  		array_push($errors, "Wrong email/password combination");
-  	}
-  }
+		$query = "SELECT * FROM customers WHERE email='$email' AND password='$password' LIMIT 1";
+		$results = mysqli_query($db, $query);
+
+		if (mysqli_num_rows($results) == 1) { // user found
+      //check if user is admin
+      $queryadmin = "SELECT * FROM customers WHERE email='$email' AND internalNotes = 'admin' LIMIT 1";
+      $_SESSION['user_type'] = 'regular user';
+      $resultsadmin = mysqli_query($db, $queryadmin);
+      echo "test";
+      echo $resultsadmin;
+      if (mysql_num_rows($resultsadmin)==1) {
+            $_SESSION['user_type'] = 'admin';
+      }
+
+      $logged_in_user = mysqli_fetch_assoc($results);
+      $_SESSION['mail'] = $logged_in_user;
+      header("Location: index.php");
+      die();
+		}else {
+			array_push($errors, "Wrong email/password combination");
+		}
+	}
+
+
+}
+$_SESSION['user_type'] = 'admin';
+if ($_GET['logout']){
+  session_unset();
+  $_POST = array();
+  unset($_POST);
+  echo "deleted everything/loggedout";
 }
 
 ?>

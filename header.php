@@ -1,5 +1,5 @@
 <header>
-
+  <?php if (!isset($_SESSION)) session_start(); ?>
    <div class="r-header r-header-inner">
      <div class="r-header-strip">
        <div class="container">
@@ -12,9 +12,24 @@
            </div>
            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-xs-12">
              <div class="r-header-action float-right">
+               <?php  if (isset($_SESSION['email'])) : ?>
+                      <a href="index.php?logout='1'"><img src="assets/images/icon-lock.png" alt='' /><span>Logout</span></a>
+                <?php endif ?>
+                <?php  if (!isset($_SESSION['email'])) : ?>
                <a href="login-register.php"> <img src="assets/images/icon-lock.png" alt='' /> <span>Login</span></a>
+               <?php endif ?>
                <a href="#" class="r-search"> <img src="assets/images/icon-search.png" alt='' /> <span>Search</span></a>
 
+              <?php if (isset($_SESSION['user_type'])) : ?>
+
+                 <?php if ($_SESSION['user_type'] == 'admin') : ?>
+                        <a href="admin.php"><img src="assets/images/icon-lock.png" alt='' /><span>Admin Panel</span></a>
+                  <?php endif; ?>
+                  <?php if ($_SESSION['user_type'] == 'regular_user'): ?>
+                    <a href="admin.php"><img src="assets/images/icon-lock.png" alt='' /><span>User Panel</span></a>
+                  <?php endif ?>
+
+              <?php endif ?>
                <div class="r-search-wrapper">
                  <div class="r-search-inner">
                    <form>
@@ -43,9 +58,11 @@
                    <li><a href="shippers.php">SHIPPERS</a></li>
                    <li><a href="contact.php">CONTACT US</a></li>
                    <li><?php  if (isset($_SESSION['email'])) : ?>
-                                       <p>Hello, <strong><?php echo $_SESSION['email']; ?></strong></p>
-                                       <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-                                      <?php endif ?></li>
+
+                                       <p>HELLO, <strong><?php echo $_SESSION['email'];?></strong></p>
+
+
+                       <?php endif; ?>
                  </ul>
                </nav>
              </div>
@@ -55,13 +72,7 @@
      </div>
      <div class="r-header-inner-banner">
        <div class="r-header-in-over">
-         <h1>Our <b>Shippers</b> </h1>
-         <div class="r-breadcrum">
-           <ul>
-             <li><a href="#">HOME</a></li>
-             <li><span>SHIPPERS</span></li>
-           </ul>
-         </div>
+
        </div>
      </div>
    </div>

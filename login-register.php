@@ -1,9 +1,9 @@
 
-<?php include('server.php') ?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<?php include ('server.php') ?>
   <head>
-
 
       <!-- PAGE TITLE -->
       <title>Login-Register - Coral Yachts</title>
@@ -66,23 +66,23 @@
                     </div>
                     <div class="r-or-line"><span>OR SIGN IN</span></div>
                     <form action="" method="post">
+                                            <?php
+                                            if (isset($_POST['login_user'])){
+                                                include('errors.php');
+                                            }?>
                       <div class="form-group">
-                        <?php
-
-                        ?>
-                        <input type="text" name="username" class = "box">
+                        <input type="email" required class="form-control" placeholder="Email Address" value="<?php echo $email; ?>" name="email">
                       </div>
                       <div class="form-group">
-                        <input type="password" name="password" class="box">
+                        <input type="password" required class="form-control" placeholder="Password" name="password">
                       </div>
                       <div class="form-group">
-                        <input type="submit" value="login now" class="btn btn-full">
+                        <button type="submit" class="btn btn-full" name="login_user">LOGIN NOW</button>
                       </div>
                     </form>
                     <div class="r-from-inof">
                       <p class="text-center">
-                        * Denotes mandatory field. <br>
-                        ** At least one telephone number is required.
+
                       </p>
                     </div>
                   </div>
@@ -94,7 +94,10 @@
                   </div>
                   <div class="r-auth-form">
                     <form method="post" action="#">
-                      <?php include('errors.php'); ?>
+                      <?php
+                      if (isset($_POST["reg_user"])){
+                              include('errors.php');
+                            } ?>
                       <div class="form-group">
                         <input type="email" required class="form-control" placeholder="Email Address" value="<?php echo $email; ?>" name="email">
                       </div>
