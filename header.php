@@ -44,18 +44,15 @@
              <div class="r-nav-section float-right">
                <nav>
                  <ul>
+                  <li><a href="index.php">HOME</a></li>
                    <li class="r-has-child">
-                     <a href="index.php">HOME</a>
-                   </li>
-                   <li class="r-has-child">
-                     <a href="yachts-listing.php">VEHICLES</a>
+                     <a href="yachts-booking.php">VEHICLES</a>
                      <ul class="pl-0 ml-0">
                        <li><a href="yachts-list-map.php">Yacht List Map</a></li>
                        <li><a href="yachts-booking.php">Yacht Booking</a></li>
                      </ul>
                    </li>
                    <li><a href="gallery.php">GALLERY</a></li>
-                   <li><a href="shippers.php">SHIPPERS</a></li>
                    <li><a href="contact.php">CONTACT US</a></li>
                    <li><?php  if (isset($_SESSION['email'])) : ?>
 

@@ -61,19 +61,17 @@
                    <div class="r-nav-section float-right">
                      <nav>
                        <ul>
-                         <li class="r-has-child">
-                           <a href="index.php">HOME</a>
-                         </li>
+                        <li><a href="index.php">HOME</a></li>
+
 
                          <li class="r-has-child">
-                           <a href="yachts-listing.php">VEHICLES</a>
+                           <a href="yachts-booking.php">VEHICLES</a>
                            <ul class="pl-0 ml-0">
                              <li><a href="yachts-list-map.php">Yachts List Map</a></li>
                              <li><a href="yachts-booking.php">Yachts Booking</a></li>
                            </ul>
                          </li>
                          <li><a href="gallery.php">GALLERY</a></li>
-                         <li><a href="shippers.php">SHIPPERS</a></li>
                          <li><a href="contact.php">CONTACT US</a></li>
                        </ul>
                      </nav>
@@ -143,39 +141,19 @@
 
                </div>
                <div class="r-top-form-title animated fadeInUp">
-                 <span>3+ YACHT TYPE & BRANDS</span>
-                 <h3>Search Your <b>Best Yachts. Now.</b></h3>
+                 <br><br>
+                 <h3>Search available Yachts at your Port <b></b></h3>
                </div>
                <form>
                  <div class="row">
                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                      <div class="form-group">
-                       <label> Yacht Brand </label>
-                       <select class="form-control">
-                         <option>Any Brands</option>
-                         <option>Any Brands</option>
-                         <option>Any Brands</option>
-                         <option>Any Brands</option>
-                       </select>
-                     </div>
-                   </div>
-                   <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                     <div class="form-group">
-                       <label> Yacht Type </label>
+                       <label> Port </label>
                        <select class="form-control">
                          <option>Any Type</option>
                          <option>Any Type</option>
                          <option>Any Type</option>
                          <option>Any Type</option>
-                       </select>
-                     </div>
-                   </div>
-                   <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                     <div class="form-group">
-                       <label> Yacht Price </label>
-                       <select class="form-control">
-                         <option>Price Low to High</option>
-                         <option>Price High to Low</option>
                        </select>
                      </div>
                    </div>
@@ -213,61 +191,6 @@
       </section>
       <div class="r-wrapper">
 
-        <div class="content-area">
-            <div class="google-map">
-                <div id="map-canvas"></div>
-            </div>
-
-            <div class="r-yacht-search r-search-map-over">
-              <div class="container">
-                <div class="r-search-map-over-in">
-                  <div class="r-top-form-title">
-                    <h3>Find Yacht on Map</h3>
-                  </div>
-                  <form>
-                    <div class="row">
-                      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                          <label> Yacht Brand </label>
-                          <select class="form-control">
-                            <option>Any Brands</option>
-                            <option>Any Brands</option>
-                            <option>Any Brands</option>
-                            <option>Any Brands</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                          <label> Yacht Type </label>
-                          <select class="form-control">
-                            <option>Any Type</option>
-                            <option>Any Type</option>
-                            <option>Any Type</option>
-                            <option>Any Type</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                          <label> Yacht Price </label>
-                          <select class="form-control">
-                            <option>Price Low to High</option>
-                            <option>Price High to Low</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                          <input type="submit" class="form-control btn-primary" value="Search yacht Now">
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-        </div>
 
         <section id="r-quote">
           <div class="r-quote r-quote-sub pt-0 r-quote-noafter">
