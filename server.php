@@ -81,12 +81,6 @@ if (isset($_POST['login_user'])) {
       //check if user is admin
       echo $email;
 
-      $sql = "INSERT INTO bookings (Customers_customerID, Yachts_yachtID, paymentPreference, date_start, date_end)
-      VALUES ($resultArray[0], $_GET['yacht'], $paymentPreference, $dpdate, $ardate)
-      ";
-
-
-
       $queryadmin = "SELECT * FROM customers WHERE email='$email' AND internalNotes = 'admin'";
       $resultsadmin = mysqli_query($db, $queryadmin);
       if (mysqli_num_rows($resultsadmin)>=1) {
