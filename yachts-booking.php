@@ -3,14 +3,16 @@
 session_start();
 $_SESSION['email'] = "abcd@abcd";
 
-include 'connect.php';
+require 'connect.php';
 
 $email = $_SESSION['email'];
 
 if (isset($_SESSION['email'])) {
-  $sql = "SELECT customerid, firstname, lastname, phone FROM customers WHERE email = '$email'";
+  $sql = "SELECT customerid FROM customers WHERE email = '$email'";
   $result = mysqli_query($db, $sql);
   $resultArray = mysqli_fetch_row($result);
+
+  
 }else{
   header("Location: pleaseLogin.php");
 }
@@ -24,9 +26,53 @@ if (isset($_SESSION['email'])) {
     <?php
       
       $userID = $resultArray['0'];
-      $userFirstName = $resultArray['1'];
-      $userLastName = $resultArray['2'];
-      $userPhone = $resultArray['3'];
+      
+
+      $yachtID = $_GET['yacht'];
+     
+
+      function isRealDate($date) { 
+        if (false === strtotime($date)) { 
+            return false;
+        } 
+        list($day, $month, $year) = explode('-', $date); 
+        return checkdate($month, $day, $year);
+      }
+
+      if (isset($_POST['submit'])) {
+
+        if(isRealDate($_POST['dpTime'])){
+          list($dpday, $dpmonth, $dpyear) = explode('-', $_POST['dpTime']);
+          $dpdate = $dpyear . '-' . $dpmonth . '-' . $dpday;
+        }else{
+          wrongDPDate();
+        }
+
+        if (isRealDate($_POST['arTime'])){
+          list($arday, $armonth, $aryear) = explode('-', $_POST['arTime']);
+          $ardate = $aryear . '-' . $armonth . '-' . $arday;
+        }else{
+          wrongARDate();
+        }
+
+        $fullName = $_POST['fullName'];
+
+        $phoneNumber = $_POST['phoneNumber'];
+
+        $preference = $_POST['payment'];
+
+
+        $sql = "INSERT INTO bookings (Customers_customerID, Yachts_yachtID, paymentPreference, date_start, date_end)
+        VALUES ($userID, $yachtID, '$preference', $dpdate, $ardate)";
+
+
+        if (mysqli_query($db, $sql)) {
+         echo "New record created successfully";
+        } else {
+         echo "Error: " . $sql . "<br>" . mysqli_error($db);
+        }
+      }
+
 
     ?>
       <!-- PAGE TITLE -->
@@ -52,24 +98,6 @@ if (isset($_SESSION['email'])) {
 
   </head>
   <body>
-      <!-- <section id="r-customizer" class="r-customizer">
-            <div class="r-selector">
-                  <span class="d-block text-center">Color Options</span>
-                  <div class="r-color_section r-color_block">
-                        <ul class="r-color_selector" id="r-color_selector">
-                            <li class="r-color_1" data-attr="color-01"></li>
-                            <li class="r-color_6" data-attr="color-06"></li>
-                            <li class="r-color_2" data-attr="color-02"></li>
-                            <li class="r-color_3" data-attr="color-03"></li>
-                            <li class="r-color_4" data-attr="color-04"></li>
-                            <li class="r-color_5" data-attr="color-05"></li>
-                            <li class="r-color_7" data-attr="color-07"></li>
-                            <li class="r-color_8" data-attr="color-08"></li>
-                        </ul>
-                  </div>
-            </div>
-            <i id="r-selector_icon" class="fa fa-cog"></i>
-      </section>   -->
       <div class="r-wrapper">
           <?php
           include "header.php";
@@ -85,9 +113,14 @@ if (isset($_SESSION['email'])) {
                   <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
-                  <span class="r-rating-text"> CAR RATING: 5/5 </span>
+                  <span class="r-rating-text"> yacht RATING: 5/5 </span>
                 </div>
-                <h2 class="r-car-name"> High class <span>Floating bathtub</span> </h2>
+                <?php
+                  $sql = "SELECT name FROM yachts WHERE yachtID = '$yachtID'";
+                  $result = mysqli_query($db, $sql);
+                  $yachtname = mysqli_fetch_row($result);
+                  echo "<h2 class=\"r-car-name\">", $yachtname[0], " </span> </h2>";
+                ?>
               </div>
 
               <div class="r-car-offer">
@@ -112,14 +145,14 @@ if (isset($_SESSION['email'])) {
                       "We know the difference is in the details and that’s why our rental services, in the tourism and business."
                     </div>
                     <div class="r-testimonial-box">
-                      "please go commit seppuku."
+                      "We know the difference is in the details and that’s why our rental services, in the tourism and business."
                     </div>
                   </div>
                 </div>
 
                 <div class="r-product-discount">
                   <span class="r-discount">DISCOUNT 50%</span>
-                  <p class="r-discount-content"> Special Offers For <strong>STONKS</strong> </p>
+                  <p class="r-discount-content"> Special <strong>STONKS</strong> </p>
                 </div>
               </div>
 
@@ -130,32 +163,19 @@ if (isset($_SESSION['email'])) {
                     <i class="fa fa-angle-up"></i>
                   </div>
                   <div class="r-accordion-body">
-                    <form>
+                    <?php echo "<form method=\"post\" action=\"yachts-booking.php?yacht=", $_GET['yacht'], "\">";?>
                       <div class="row">
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label>Departure Port</label>
-                            <div class="input-group">
-                               <input type="text" class="form-control" placeholder="Port name" />
-                               <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label>arival Port</label>
-                            <div class="input-group">
-                               <input type="text" class="form-control" placeholder="Port name" />
-                               <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                            </div>
-                          </div>
-                        </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                           <div class="form-group">
                             <label>Departure date</label>
                             <div class="input-group">
-                               <input type="text" class="form-control" placeholder="dd.mm.yyyy" />
+                               <input type="text" required class="form-control" placeholder="dd-mm-yyyy" name="dpTime" />
                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                               <?php
+                                function wrongDPDate() {
+                                  echo "Wrong date format, please try again.";
+                                }
+                               ?>
                             </div>
                           </div>
                         </div>
@@ -163,31 +183,18 @@ if (isset($_SESSION['email'])) {
                           <div class="form-group">
                             <label>Arival date</label>
                             <div class="input-group">
-                               <input type="text" class="form-control" placeholder="dd.mm.yyyy" />
+                               <input type="text" required class="form-control" placeholder="dd-mm-yyyy" name="arTime" />
                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label>Departure time </label>
-                            <div class="input-group">
-                               <input type="text" class="form-control" placeholder="12.00AM" />
-                               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <div class="form-group">
-                            <label>Arival time</label>
-                            <div class="input-group">
-                               <input type="text" class="form-control" placeholder="12.00PM" />
-                               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                               <?php
+                                function wrongARDate(){
+                                  echo "wrong date format, please try again.";
+                                }
+                               ?>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </form>
+        
                   </div>
                 </div>
 
@@ -199,18 +206,18 @@ if (isset($_SESSION['email'])) {
                     <i class="fa fa-angle-up"></i>
                   </div>
                   <div class="r-accordion-body">
-                    <form>
+                    
                       <div class="row">
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" class="form-control" placeholder="Your full name"/>
+                            <input type="text" required class="form-control" name="fullName" placeholder="Your full name"/>
                           </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
                             <label>Phone Number</label>
-                            <input type="text" class="form-control" placeholder=""/>
+                            <input type="text" required class="form-control" name="phoneNumber" placeholder=""/>
                           </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
@@ -218,7 +225,7 @@ if (isset($_SESSION['email'])) {
 
                       </div>
 
-                    </form>
+                    
                   </div>
                 </div>
 
@@ -228,42 +235,42 @@ if (isset($_SESSION['email'])) {
                     <i class="fa fa-angle-up"></i>
                   </div>
                   <div class="r-accordion-body">
-                    <form>
+                    
                       <div class="r-payment-options">
                         <div class="row">
                           <div class="col-md-6 col-sm-12">
-                            <div class="r-site-checkbox">
+                            <div>
                               <label>
-                                <input type="checkbox" />
-                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
+                                <input type="radio" value="directdebit" name="payment"/>
+                                <span class="r-site-checkbox-icon"> </span>
                                 <span class="r-site-checkbox-text">Direct bank Transfer</span>
                               </label>
                             </div>
                           </div>
                           <div class="col-md-6 col-sm-12">
-                            <div class="r-site-checkbox">
+                            <div>
                               <label>
-                                <input type="checkbox" />
-                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
+                                <input type="radio" value="creditcard" name="payment" />
+                                <span class="r-site-checkbox-icon"> </span>
                                 <span class="r-site-checkbox-text">Credit Card</span>
                               </label>
                               <img src="assets/images/payment-icons.jpg" alt="" class="" />
                             </div>
                           </div>
                           <div class="col-md-6 col-sm-12">
-                            <div class="r-site-checkbox">
+                            <div>
                               <label>
-                                <input type="checkbox"/>
-                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                                <span class="r-site-checkbox-text">Cheque Payment</span>
+                                <input type="radio" value="ideal" name="payment" />
+                                <span class="r-site-checkbox-icon"> </span>
+                                <span class="r-site-checkbox-text">ideal</span>
                               </label>
                             </div>
                           </div>
                           <div class="col-md-6 col-sm-12">
-                            <div class="r-site-checkbox">
+                            <div>
                               <label>
-                                <input type="checkbox"/>
-                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
+                                <input type="radio" value="paypal" name="payment" />
+                                <span class="r-site-checkbox-icon"> </span>
                                 <span class="r-site-checkbox-text">Paypal</span>
                               </label>
                               <img src="assets/images/paypal-icon.jpg" alt="" class="" />
@@ -271,7 +278,6 @@ if (isset($_SESSION['email'])) {
                           </div>
                         </div>
                       </div>
-                    </form>
                   </div>
                 </div>
 
@@ -281,7 +287,6 @@ if (isset($_SESSION['email'])) {
                     <i class="fa fa-angle-up"></i>
                   </div>
                   <div class="r-accordion-body">
-                    <form>
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
@@ -289,7 +294,6 @@ if (isset($_SESSION['email'])) {
                           </div>
                         </div>
                       </div>
-                    </form>
                   </div>
                 </div>
 
@@ -300,50 +304,21 @@ if (isset($_SESSION['email'])) {
                         <label>
                           <input type="checkbox" />
                           <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                          <span class="r-site-checkbox-text">I accept all informations & payment eyc</span>
+                          <span class="r-site-checkbox-text">I accept all informations & payment etc</span>
                         </label>
                       </div>
                     </div>
                     <div class="col-lg-6 col-md-12 r-submission-btn-wrapper">
                       <input type="reset" class="btn-default" value="Cancel This" />
-                      <input type="submit" class="btn-primary" value="Reserve Now" />
+                      <input type="submit" class="btn-primary" value="Reserve Now" name="submit" />
                     </div>
                   </div>
                 </div>
               </div>
+            </form>
             </div>
-
-
-
-
           </div>
         </section> <!-- /r-car-info -->
-
-        <section id="r-get-in-touch">
-          <div class="r-get-in-touch">
-            <div class="container">
-              <div class="r-get-header">
-                <span>CONTACT US NOW</span>
-                <h2>Keep <b>In Touch.</b></h2>
-              </div>
-              <div class="r-get-form">
-                <form action="#">
-                  <div class="clearfix">
-                    <div class="form-group"><input type="text" placeholder="User name"></div>
-                    <div class="form-group"><input type="email" placeholder="Email Address"></div>
-                  </div>
-                  <div class="form-group"><input type="email" placeholder="Title Message"></div>
-                  <div class="form-group">
-                    <textarea placeholder="Message"></textarea>
-                  </div>
-                  <div class="text-center">
-                    <button class="btn btn-full">SEND MESSAGE NOW</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
         <footer>
           <div class="r-footer">
             <div class="container">
