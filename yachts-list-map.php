@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <?php
     include 'connect.php';
+    include 'header.php';
 
 
     if (isset($_GET['userSearch'])) {
@@ -205,16 +206,6 @@
                       <h5>100.2424.2000</h5>
                     </div>
                     <div class="r-footer-widget r-footer-nav">
-                      <h6>OUR INFO</h6>
-                      <nav>
-                        <ul>
-                          <li><a href="#">About Royal Cars</a></li>
-                          <li><a href="#">Our Mission & Strategy</a></li>
-                          <li><a href="#">Our Vision</a></li>
-                          <li><a href="#">Royal Cars Advantages</a></li>
-                          <li><a href="#">Contact Us</a></li>
-                        </ul>
-                      </nav>
                     </div>
                   </div>
                 </div>

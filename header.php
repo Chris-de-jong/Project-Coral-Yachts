@@ -53,16 +53,5 @@
          </div>
        </div>
      </div>
-     <div class="r-header-inner-banner">
-       <div class="r-header-in-over">
-         <h1>Our <b>Shippers</b> </h1>
-         <div class="r-breadcrum">
-           <ul>
-             <li><a href="#">HOME</a></li>
-             <li><span>SHIPPERS</span></li>
-           </ul>
-         </div>
-       </div>
-     </div>
    </div>
  </header>

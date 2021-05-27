@@ -1,10 +1,10 @@
 <?php
 
+include "header.php";
+
 session_start();
-$_SESSION['email'] = "abcd@abcd";
-
 require 'connect.php';
-
+$_SESSION['email'] = "abcd@abcd";
 $email = $_SESSION['email'];
 
 if (isset($_SESSION['email'])) {
@@ -12,9 +12,10 @@ if (isset($_SESSION['email'])) {
   $result = mysqli_query($db, $sql);
   $resultArray = mysqli_fetch_row($result);
 
+
   
 }else{
-  header("Location: pleaseLogin.php");
+  header("Location: login-register.php");
 }
 
 ?>
@@ -99,9 +100,6 @@ if (isset($_SESSION['email'])) {
   </head>
   <body>
       <div class="r-wrapper">
-          <?php
-          include "header.php";
-           ?>
 
         <section class="r-car-info-wrapper">
           <div class="container">
@@ -116,7 +114,7 @@ if (isset($_SESSION['email'])) {
                   <span class="r-rating-text"> yacht RATING: 5/5 </span>
                 </div>
                 <?php
-                  $sql = "SELECT name FROM yachts WHERE yachtID = '$yachtID'";
+                  $sql = "SELECT name, priceperday FROM yachts WHERE yachtID = '$yachtID'";
                   $result = mysqli_query($db, $sql);
                   $yachtname = mysqli_fetch_row($result);
                   echo "<h2 class=\"r-car-name\">", $yachtname[0], " </span> </h2>";
@@ -125,7 +123,10 @@ if (isset($_SESSION['email'])) {
 
               <div class="r-car-offer">
                 <div class="r-offer-cost">
-                  <span class="fa fa-usd r-currency"></span> 50.00 <small>Per Day</small>
+                  <?php
+
+                    echo "<span class=\"fa fa-usd r-currency\"></span>", $yachtname['1'], "    <small>Per Day</small>";
+                  ?>
                 </div>
               </div>
             </div> <!-- /r-car-info-header -->
