@@ -17,8 +17,7 @@
                 <?php endif ?>
                 <?php  if (!isset($_SESSION['email'])) : ?>
                <a href="login-register.php"> <img src="assets/images/icon-lock.png" alt='' /> <span>Login</span></a>
-               <?php endif ?>
-               <a href="#" class="r-search"> <img src="assets/images/icon-search.png" alt='' /> <span>Search</span></a>
+               <?php endif ?> 
 
               <?php if (isset($_SESSION['user_type'])) : ?>
 
@@ -30,30 +29,13 @@
                   <?php endif ?>
 
               <?php endif ?>
-               <div class="r-search-wrapper">
-                 <div class="r-search-inner">
-                   <form>
-                       <input type="text" class="r-search-field" placeholder="Search"/>
-                       <button type="submit" class="r-search-btn">
-                         <i class="fa fa-search"></i>
-                       </button>
-                   </form>
-                 </div>
-               </div> <!-- /r-search-wrapper -->
              </div>
              <div class="r-nav-section float-right">
                <nav>
                  <ul>
                   <li><a href="index.php">HOME</a></li>
-                   <li class="r-has-child">
-                     <a href="yachts-booking.php">VEHICLES</a>
-                     <ul class="pl-0 ml-0">
-                       <li><a href="yachts-list-map.php">Yacht List Map</a></li>
-                       <li><a href="yachts-booking.php">Yacht Booking</a></li>
-                     </ul>
-                   </li>
+                    <li><a href="yachts-list-map.php">YACHTS</a></li>
                    <li><a href="gallery.php">GALLERY</a></li>
-                   <li><a href="contact.php">CONTACT US</a></li>
                    <li><?php  if (isset($_SESSION['email'])) : ?>
 
                                        <p>HELLO, <strong><?php echo $_SESSION['email'];?></strong></p>
