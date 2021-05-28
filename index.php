@@ -44,10 +44,6 @@ include('server.php');
                  </div>
                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
                    <div class="r-header-action float-left">
-<<<<<<< Updated upstream
-                     <a href="login-register.php"> <img src="assets/images/icon-lock.png" alt='' /> <span>Login</span></a>
-                     <a href="#" class="r-search"> <img src="assets/images/icon-search.png" alt='' /> <span>Search</span></a>
-=======
 
                      <?php  if (isset($_SESSION['email'])) : ?>
                             <a href="index.php?logout='1'"><img src="assets/images/icon-lock.png" alt='' /><span>Logout</span></a>
@@ -55,7 +51,6 @@ include('server.php');
                       <?php  if (!isset($_SESSION['email'])) : ?>
                             <a href="login-register.php"> <img src="assets/images/icon-lock.png" alt='' /> <span>Login</span></a>
                           <?php endif ?>
->>>>>>> Stashed changes
 
                      <div class="r-search-wrapper">
                        <div class="r-search-inner">
@@ -71,31 +66,9 @@ include('server.php');
                    <div class="r-nav-section float-right">
                      <nav>
                        <ul>
-<<<<<<< Updated upstream
-                         <li class="r-has-child">
-                           <a href="index.php">HOME</a>
-                         </li>
-                         <li class="r-has-child">
-                           <a href="about.php">ABOUT US</a>
-                           <ul class="pl-0 ml-0">
-                             <li><a href="faq.php">Faq</a></li>
-                           </ul>
-                         </li>
-                         <li class="r-has-child">
-                           <a href="yachts-listing.php">VEHICLES</a>
-                           <ul class="pl-0 ml-0">
-                             <li><a href="yachts-list-map.php">Yachts List Map</a></li>
-                             <li><a href="yachts-booking.php">Yachts Booking</a></li>
-                           </ul>
-                         </li>
-                         <li><a href="gallery.php">GALLERY</a></li>
-                         <li><a href="shippers.php">SHIPPERS</a></li>
-                         <li><a href="contact.php">CONTACT US</a></li>
-=======
                         <li><a href="index.php">HOME</a></li>
                              <li><a href="yachts-list-map.php">YACHTS</a></li>
                          <li><a href="gallery.php">GALLERY</a></li>
->>>>>>> Stashed changes
                        </ul>
                      </nav>
                    </div>
@@ -108,11 +81,7 @@ include('server.php');
                <img style="width: 100%; height: 650px;" src="assets/images/main-slider-01.png" class="img-fluid d-block m-auto" alt="">
                <div class="container">
                  <div class="r-slider-top-content">
-<<<<<<< Updated upstream
-                   <h1 class="animated fadeInDown">Geen Kia Rio <span>z</span></h1>
-=======
                    <h1 class="animated fadeInDown">Boat <span>#1</span></h1>
->>>>>>> Stashed changes
                    <h4 class="animated fadeInLeft">FOR RENT <strong>$50</strong> PER DAY</h4>
                    <a href="#" class="btn btn-outlined animated fadeInUp"> Reserve Now </a>
                  </div>
@@ -122,11 +91,7 @@ include('server.php');
                <img style="width: 100%; height: 650px;" src="assets/images/main-slider-02.png" class="img-fluid d-block m-auto" alt="">
                <div class="container">
                  <div class="r-slider-top-content">
-<<<<<<< Updated upstream
-                   <h1>Geen BMW <span>3</span></h1>
-=======
                    <h1>Boat <span>#2</span></h1>
->>>>>>> Stashed changes
                    <h4>FOR RENT <strong>$150</strong> PER DAY</h4>
                    <a href="#" class="btn btn-outlined"> Reserve Now </a>
                  </div>
@@ -136,11 +101,7 @@ include('server.php');
                <img style="width: 100%; height: 650px;" src="assets/images/main-slider-03.png" class="img-fluid d-block m-auto" alt="">
                <div class="container">
                  <div class="r-slider-top-content">
-<<<<<<< Updated upstream
-                   <h1>Geen Audi <span>A4</span></h1>
-=======
                    <h1>Boat <span>#3</span></h1>
->>>>>>> Stashed changes
                    <h4>FOR RENT <strong>$100</strong> PER DAY</h4>
                    <a href="#" class="btn btn-outlined"> Reserve Now </a>
                  </div>
@@ -162,66 +123,39 @@ include('server.php');
                       </h3>
                      </div>
                   <?php endif ?>
+                  <?php
+                  if (isset($_GET['logout'])) {
+                    session_unset();
+                    $_POST = array();
+                    unset($_POST);
+                  }
+                  ?>
 
-                   <!-- logged in user information -->
-                   <?php  if (isset($_SESSION['email'])) : ?>
-                    <p>Hello, <strong><?php echo $_SESSION['email']; ?></strong></p>
-                    <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-                   <?php endif ?>
+
+
+
+
                </div>
                <div class="r-top-form-title animated fadeInUp">
-                 <span>3+ YACHT TYPE & BRANDS</span>
-                 <h3>Search Your <b>Best Yachts. Now.</b></h3>
+                 <br><br>
+                 <h3>Search available Yachts at your Port <b></b></h3>
                </div>
                <form action="index.php" method="get">
                  <div class="row">
                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                      <div class="form-group">
-<<<<<<< Updated upstream
-                       <label> Yacht Brand </label>
-                       <select class="form-control">
-                         <option>Any Brands</option>
-                         <option>Any Brands</option>
-                         <option>Any Brands</option>
-                         <option>Any Brands</option>
-                       </select>
-                     </div>
-                   </div>
-                   <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                     <div class="form-group">
-                       <label> Yacht Type </label>
-                       <select class="form-control">
-                         <option>Any Type</option>
-                         <option>Any Type</option>
-                         <option>Any Type</option>
-                         <option>Any Type</option>
-=======
                        <label> Port </label>
                        <select class="form-control" name="searchSelector">
                        	<option value="!">Choose an option</option>
                         <option value="Rotterdam">Rotterdam</option>
                         <option value="Curacao">Curacao</option>
                         <option value="Hawaii">Hawaii</option>
->>>>>>> Stashed changes
                        </select>
                      </div>
                    </div>
                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                      <div class="form-group">
-<<<<<<< Updated upstream
-                       <label> Yacht Price </label>
-                       <select class="form-control">
-                         <option>Price Low to High</option>
-                         <option>Price High to Low</option>
-                       </select>
-                     </div>
-                   </div>
-                   <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                     <div class="form-group">
-                       <input type="submit" class="form-control btn-primary" value="Search Yacht Now">
-=======
                        <input type="submit" name="userSearch" class="form-control btn-primary" value="Search Yacht Now">
->>>>>>> Stashed changes
                      </div>
                    </div>
                  </div>
@@ -309,61 +243,6 @@ include('server.php');
       </section>
       <div class="r-wrapper">
 
-        <div class="content-area">
-            <div class="google-map">
-                <div id="map-canvas"></div>
-            </div>
-
-            <div class="r-yacht-search r-search-map-over">
-              <div class="container">
-                <div class="r-search-map-over-in">
-                  <div class="r-top-form-title">
-                    <h3>Find Yacht on Map</h3>
-                  </div>
-                  <form>
-                    <div class="row">
-                      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                          <label> Yacht Brand </label>
-                          <select class="form-control">
-                            <option>Any Brands</option>
-                            <option>Any Brands</option>
-                            <option>Any Brands</option>
-                            <option>Any Brands</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                          <label> Yacht Type </label>
-                          <select class="form-control">
-                            <option>Any Type</option>
-                            <option>Any Type</option>
-                            <option>Any Type</option>
-                            <option>Any Type</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                          <label> Yacht Price </label>
-                          <select class="form-control">
-                            <option>Price Low to High</option>
-                            <option>Price High to Low</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                          <input type="submit" class="form-control btn-primary" value="Search yacht Now">
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-        </div>
 
         <section id="r-quote">
           <div class="r-quote r-quote-sub pt-0 r-quote-noafter">
