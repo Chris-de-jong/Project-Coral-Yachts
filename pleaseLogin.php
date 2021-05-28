@@ -1,55 +1,9 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <?php
-    include 'connect.php';
-    include 'header.php';
-
-
-    if (isset($_GET['userSearch'])) {
-      $searchTestConstructor = array($_GET['userSearch'], "!");
-      $searchTest = join("", $searchTestConstructor);
-    }else{
-      $searchTest = "!";
-    }
-    
-    if (isset($_GET['search_activate'])) {
-      if ($searchTest != "!!") {
-        $userSearch = $_GET['userSearch'];
-        $sql = "SELECT YachtID, name, portname, status, priceperday FROM yachts WHERE portname = '$userSearch'";
-      }else{
-        $sql = "SELECT YachtID, name, portname, status, priceperday FROM yachts";
-      }
-    }else{
-      $sql = "SELECT YachtID, name, portname, status, priceperday FROM yachts";
-    }
-
-
-    $result = mysqli_query($db, $sql);
-
-    $yachtidArray = array();
-    $yachtnameArray = array();
-    $portnameArray = array();
-    $statusArray = array();
-    $priceArray = array();
-
-
-    if (mysqli_num_rows($result) > 0) {
-      while($row = mysqli_fetch_row($result)) {
-        array_push($yachtidArray, $row['0']);
-        array_push($yachtnameArray, $row['1']);
-        array_push($portnameArray, $row['2']);
-        array_push($statusArray, $row['3']);
-        array_push($priceArray, $row['4']);
-      }
-    }
-
-
-
-    $totalrow = count($yachtidArray);
-  ?>
-  <head>
+<?php
+include "header.php";
+?>
+<head>
       <!-- PAGE TITLE -->
-      <title>Yacht list</title>
+      <title>Please Login</title>
 
       <!-- META-DATA -->
       <meta http-equiv="content-type" content="text/html; charset=utf-8" >
@@ -71,96 +25,20 @@
 
   </head>
   <body>
-     <section id="r-customizer" class="r-customizer">
-            <i id="r-selector_icon" class="fa fa-cog"></i>
-      </section>
-      <div class="r-wrapper">
-        <?php
-          include "header.php";
-        ?>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-xl-7 col-lg-6 col-md-6 col-sm-12 col-xs-12 r-list-area">
-              <div class="r-car-search r-carlist-search">
-                <div class="container">
-                  <form action="yachts-list-map.php" method="get">
-                    <div class="row">
-                      <div class="r-search-full col-md-12">
-                       <div class="form-group">
-                          <input type="text" class="form-control" name="userSearch" placeholder="Search Yachts by port">
-                          <input type="submit" value="GO" class="fa fa-search" name="search_activate">
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-
-                </div>
-              </div>
-              <div class="clearfix r-sort-val">
-                <div class="pull-left">
-                </div>
-                <div class="pull-right"><span class="r-total-result"><?php echo count($yachtidArray); ?> results</span></div>
-              </div>
-              <div class="r-best-offer-list r-car-list-map mCustomScrollbar">
-                <form class="row clearfix" method="post">
-                
-                    <?php
 
 
-                      for ($rowselector=0; $rowselector < $totalrow ; $rowselector++) { 
+  		<div class="r-header-inner-banner">
+       <div class="r-header-in-over">
+         <h1>Our <b>Shippers</b> </h1>
+         <div class="r-breadcrum">
+           <ul>
+             <li><a href="#">HOME</a></li>
+             <li><span>SHIPPERS</span></li>
+           </ul>
+         </div>
+       </div>
+     </div>
 
-                        echo "
-                          <div class=\"col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12\">
-                            <div class=\"r-best-offer-single\">
-                              <div class=\"r-best-offer-in\">
-                                <div class=\"r-offer-img\">
-                                  <a class=\"d-inline-block\" href=\"yachts-booking.php?yacht=", $yachtidArray[$rowselector], "\"><img src=\"assets/images/car-1.png\" class=\"img-fluid d-block m-auto\" alt=\"\"></a>
-                                </div>
-                                <div class=\"r-best-offer-content\">
-                                  <a href=\"yachts-booking.php?yacht=", $yachtidArray[$rowselector], "\"><b>", $yachtnameArray[$rowselector], "</b></a>
-                                  <p>Start at <b>", $priceArray[$rowselector], " EUR</b> per day</p>
-                                  <ul class=\"pl-0 mb-0\">
-                                    <li><span>PORT: ", $portnameArray[$rowselector],  "</span></li><br>
-                                    <li></i><span>STATUS: ", $statusArray[$rowselector], "</span></li><br>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        ";
-                      }
-                    ?>
-                  
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <section id="r-get-in-touch">
-          <div class="r-get-in-touch">
-            <div class="container">
-              <div class="r-get-header">
-                <span>CONTACT US NOW</span>
-                <h2>Keep <b>In Touch.</b></h2>
-              </div>
-              <div class="r-get-form">
-                <form action="#">
-                  <div class="clearfix">
-                    <div class="form-group"><input type="text" placeholder="User name"></div>
-                    <div class="form-group"><input type="email" placeholder="Email Address"></div>
-                  </div>
-                  <div class="form-group"><input type="email" placeholder="Title Message"></div>
-                  <div class="form-group">
-                    <textarea placeholder="Message"></textarea>
-                  </div>
-                  <div class="text-center">
-                    <button class="btn btn-full">SEND MESSAGE NOW</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
         <footer>
           <div class="r-footer">
             <div class="container">
