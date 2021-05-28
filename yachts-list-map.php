@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <?php
-    include 'connect.php';
+    include 'server.php';
     include 'header.php';
 
 
@@ -13,7 +13,7 @@
     }
     
     if (isset($_GET['search_activate'])) {
-      if ($searchTest != "!!") {
+      if ($searchTest != "!") {
         $userSearch = $_GET['userSearch'];
         $sql = "SELECT YachtID, name, portname, status, priceperday FROM yachts WHERE portname = '$userSearch'";
       }else{
@@ -75,9 +75,6 @@
             <i id="r-selector_icon" class="fa fa-cog"></i>
       </section>
       <div class="r-wrapper">
-        <?php
-          include "header.php";
-        ?>
         <div class="container-fluid">
           <div class="row">
             <div class="col-xl-7 col-lg-6 col-md-6 col-sm-12 col-xs-12 r-list-area">

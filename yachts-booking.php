@@ -1,10 +1,13 @@
 <?php
 
-include "header.php";
 
-session_start();
-require 'connect.php';
-$_SESSION['email'] = "abcd@abcd";
+if (isset($_GET['yacht'])) {}
+else{
+  header("Location: yachts-list-map.php");
+}
+
+include "header.php";
+require 'server.php';
 $email = $_SESSION['email'];
 
 if (isset($_SESSION['email'])) {

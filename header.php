@@ -13,6 +13,7 @@
            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-xs-12">
              <div class="r-header-action float-right">
                <a href="login-register.php"> <img src="assets/images/icon-lock.png" alt='' /> <span>Login</span></a>
+<<<<<<< Updated upstream
                <a href="#" class="r-search"> <img src="assets/images/icon-search.png" alt='' /> <span>Search</span></a>
 
                <div class="r-search-wrapper">
@@ -25,10 +26,25 @@
                    </form>
                  </div>
                </div> <!-- /r-search-wrapper -->
+=======
+               <?php endif ?> 
+
+              <?php if (isset($_SESSION['user_type'])) : ?>
+
+                 <?php if ($_SESSION['user_type'] == 'admin') : ?>
+                        <a href="admin.php"><img src="assets/images/icon-lock.png" alt='' /><span>Admin Panel</span></a>
+                  <?php endif; ?>
+                  <?php if ($_SESSION['user_type'] == 'regular_user'): ?>
+                    <a href="admin.php"><img src="assets/images/icon-lock.png" alt='' /><span>User Panel</span></a>
+                  <?php endif ?>
+
+              <?php endif ?>
+>>>>>>> Stashed changes
              </div>
              <div class="r-nav-section float-right">
                <nav>
                  <ul>
+<<<<<<< Updated upstream
                    <li class="r-has-child">
                      <a href="index.php">HOME</a>
                    </li>
@@ -42,6 +58,11 @@
                    <li><a href="gallery.php">GALLERY</a></li>
                    <li><a href="shippers.php">SHIPPERS</a></li>
                    <li><a href="contact.php">CONTACT US</a></li>
+=======
+                  <li><a href="index.php">HOME</a></li>
+                    <li><a href="yachts-list-map.php">YACHTS</a></li>
+                   <li><a href="gallery.php">GALLERY</a></li>
+>>>>>>> Stashed changes
                    <li><?php  if (isset($_SESSION['email'])) : ?>
                                        <p>Hello, <strong><?php echo $_SESSION['email']; ?></strong></p>
                                        <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>

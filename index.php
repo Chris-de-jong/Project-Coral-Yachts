@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<?php include('server.php') ?>
+<?php 
+include('server.php');
+
+
+
+    
+?>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
       <!-- PAGE TITLE -->
@@ -38,8 +44,18 @@
                  </div>
                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
                    <div class="r-header-action float-left">
+<<<<<<< Updated upstream
                      <a href="login-register.php"> <img src="assets/images/icon-lock.png" alt='' /> <span>Login</span></a>
                      <a href="#" class="r-search"> <img src="assets/images/icon-search.png" alt='' /> <span>Search</span></a>
+=======
+
+                     <?php  if (isset($_SESSION['email'])) : ?>
+                            <a href="index.php?logout='1'"><img src="assets/images/icon-lock.png" alt='' /><span>Logout</span></a>
+                      <?php endif ?>
+                      <?php  if (!isset($_SESSION['email'])) : ?>
+                            <a href="login-register.php"> <img src="assets/images/icon-lock.png" alt='' /> <span>Login</span></a>
+                          <?php endif ?>
+>>>>>>> Stashed changes
 
                      <div class="r-search-wrapper">
                        <div class="r-search-inner">
@@ -55,6 +71,7 @@
                    <div class="r-nav-section float-right">
                      <nav>
                        <ul>
+<<<<<<< Updated upstream
                          <li class="r-has-child">
                            <a href="index.php">HOME</a>
                          </li>
@@ -74,6 +91,11 @@
                          <li><a href="gallery.php">GALLERY</a></li>
                          <li><a href="shippers.php">SHIPPERS</a></li>
                          <li><a href="contact.php">CONTACT US</a></li>
+=======
+                        <li><a href="index.php">HOME</a></li>
+                             <li><a href="yachts-list-map.php">YACHTS</a></li>
+                         <li><a href="gallery.php">GALLERY</a></li>
+>>>>>>> Stashed changes
                        </ul>
                      </nav>
                    </div>
@@ -83,30 +105,42 @@
            </div>
            <div class="r-slider owl-carousel" id="defaultHomeSlider">
              <div class="r-slider-item">
-               <img src="assets/images/main-slider-01.png" class="img-fluid d-block m-auto" alt="">
+               <img style="width: 100%; height: 650px;" src="assets/images/main-slider-01.png" class="img-fluid d-block m-auto" alt="">
                <div class="container">
                  <div class="r-slider-top-content">
+<<<<<<< Updated upstream
                    <h1 class="animated fadeInDown">Geen Kia Rio <span>z</span></h1>
+=======
+                   <h1 class="animated fadeInDown">Boat <span>#1</span></h1>
+>>>>>>> Stashed changes
                    <h4 class="animated fadeInLeft">FOR RENT <strong>$50</strong> PER DAY</h4>
                    <a href="#" class="btn btn-outlined animated fadeInUp"> Reserve Now </a>
                  </div>
                </div>
              </div>
              <div class="r-slider-item">
-               <img src="assets/images/main-slider-02.png" class="img-fluid d-block m-auto" alt="">
+               <img style="width: 100%; height: 650px;" src="assets/images/main-slider-02.png" class="img-fluid d-block m-auto" alt="">
                <div class="container">
                  <div class="r-slider-top-content">
+<<<<<<< Updated upstream
                    <h1>Geen BMW <span>3</span></h1>
+=======
+                   <h1>Boat <span>#2</span></h1>
+>>>>>>> Stashed changes
                    <h4>FOR RENT <strong>$150</strong> PER DAY</h4>
                    <a href="#" class="btn btn-outlined"> Reserve Now </a>
                  </div>
                </div>
              </div>
              <div class="r-slider-item">
-               <img src="assets/images/main-slider-03.png" class="img-fluid d-block m-auto" alt="">
+               <img style="width: 100%; height: 650px;" src="assets/images/main-slider-03.png" class="img-fluid d-block m-auto" alt="">
                <div class="container">
                  <div class="r-slider-top-content">
+<<<<<<< Updated upstream
                    <h1>Geen Audi <span>A4</span></h1>
+=======
+                   <h1>Boat <span>#3</span></h1>
+>>>>>>> Stashed changes
                    <h4>FOR RENT <strong>$100</strong> PER DAY</h4>
                    <a href="#" class="btn btn-outlined"> Reserve Now </a>
                  </div>
@@ -139,10 +173,11 @@
                  <span>3+ YACHT TYPE & BRANDS</span>
                  <h3>Search Your <b>Best Yachts. Now.</b></h3>
                </div>
-               <form>
+               <form action="index.php" method="get">
                  <div class="row">
                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                      <div class="form-group">
+<<<<<<< Updated upstream
                        <label> Yacht Brand </label>
                        <select class="form-control">
                          <option>Any Brands</option>
@@ -160,11 +195,20 @@
                          <option>Any Type</option>
                          <option>Any Type</option>
                          <option>Any Type</option>
+=======
+                       <label> Port </label>
+                       <select class="form-control" name="searchSelector">
+                       	<option value="!">Choose an option</option>
+                        <option value="Rotterdam">Rotterdam</option>
+                        <option value="Curacao">Curacao</option>
+                        <option value="Hawaii">Hawaii</option>
+>>>>>>> Stashed changes
                        </select>
                      </div>
                    </div>
                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                      <div class="form-group">
+<<<<<<< Updated upstream
                        <label> Yacht Price </label>
                        <select class="form-control">
                          <option>Price Low to High</option>
@@ -175,10 +219,69 @@
                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                      <div class="form-group">
                        <input type="submit" class="form-control btn-primary" value="Search Yacht Now">
+=======
+                       <input type="submit" name="userSearch" class="form-control btn-primary" value="Search Yacht Now">
+>>>>>>> Stashed changes
                      </div>
                    </div>
                  </div>
-               </form>
+               	</form>
+               	<?php
+            		if (isset($_GET['userSearch'])) {
+						if($_GET['searchSelector'] != "!"){
+							$userSearch = $_GET['searchSelector'];
+   							$sql = "SELECT YachtID, name, portname, status, priceperday FROM yachts WHERE portname = '$userSearch'";
+
+							$result = mysqli_query($db, $sql);
+
+					   		$yachtidArray = array();
+					   		$yachtnameArray = array();
+					    	$portnameArray = array();
+					    	$statusArray = array();
+					    	$priceArray = array();
+
+
+					    	if (mysqli_num_rows($result) > 0) {
+					      		while($row = mysqli_fetch_row($result)) {
+					        		array_push($yachtidArray, $row['0']);
+					        		array_push($yachtnameArray, $row['1']);
+					        		array_push($portnameArray, $row['2']);
+					        		array_push($statusArray, $row['3']);
+					        		array_push($priceArray, $row['4']);
+					      		}
+					    	}
+					    	$totalrow = count($yachtidArray);
+					    	GenerateSearch($totalrow, $yachtidArray, $yachtnameArray, $priceArray, $portnameArray, $statusArray);
+					   	}
+					}
+
+
+
+               		function GenerateSearch($totalrow, $yachtidArray, $yachtnameArray, $priceArray, $portnameArray, $statusArray){
+                      	for ($rowselector=0; $rowselector < $totalrow ; $rowselector++) { 
+
+                        echo "
+                          <div class=\"col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12\">
+                            <div class=\"r-best-offer-single\">
+                              <div class=\"r-best-offer-in\">
+                                <div class=\"r-offer-img\">
+                                  <a class=\"d-inline-block\" href=\"yachts-booking.php?yacht=", $yachtidArray[$rowselector], "\"><img src=\"assets/images/car-1.png\" class=\"img-fluid d-block m-auto\" alt=\"\"></a>
+                                </div>
+                                <div class=\"r-best-offer-content\">
+                                  <a href=\"yachts-booking.php?yacht=", $yachtidArray[$rowselector], "\"><b>", $yachtnameArray[$rowselector], "</b></a>
+                                  <p>Start at <b>", $priceArray[$rowselector], " EUR</b> per day</p>
+                                  <ul class=\"pl-0 mb-0\">
+                                    <li><span>PORT: ", $portnameArray[$rowselector],  "</span></li><br>
+                                    <li></i><span>STATUS: ", $statusArray[$rowselector], "</span></li><br>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ";
+                      }
+                  }
+                ?>
              </div>
            </div>
          </div>
