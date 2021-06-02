@@ -51,6 +51,7 @@ include('server.php');
                       <?php  if (!isset($_SESSION['email'])) : ?>
                             <a href="login-register.php"> <img src="assets/images/icon-lock.png" alt='' /> <span>Login</span></a>
                           <?php endif ?>
+
                      <div class="r-search-wrapper">
                        <div class="r-search-inner">
                          <form>
